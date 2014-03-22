@@ -1,23 +1,132 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3676"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--To Do Cal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ToDoCalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mOG-Ae-erZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="n7c-12-Y2m"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan. 2, 2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3A-Dq-din">
+                                <rect key="frame" x="292" y="20" width="184" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="184" id="EkH-po-QPZ"/>
+                                    <constraint firstAttribute="height" constant="44" id="VnQ-jY-nAB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6S-vJ-Gah">
+                                <rect key="frame" x="704" y="20" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="TDF-Uf-ERR"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="AddIcon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbE-9T-7SI" customClass="DaySelectionView">
+                                <rect key="frame" x="0.0" y="964" width="768" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85d-Rn-asB" customClass="DayView">
+                                <rect key="frame" x="0.0" y="72" width="768" height="884"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="L6S-vJ-Gah" secondAttribute="trailing" constant="20" symbolic="YES" id="36X-b6-TTL"/>
+                            <constraint firstAttribute="bottom" secondItem="EbE-9T-7SI" secondAttribute="bottom" id="Hb7-GF-ZU5"/>
+                            <constraint firstItem="85d-Rn-asB" firstAttribute="leading" secondItem="EbE-9T-7SI" secondAttribute="leading" id="Nc7-ea-drr"/>
+                            <constraint firstItem="85d-Rn-asB" firstAttribute="top" secondItem="L6S-vJ-Gah" secondAttribute="bottom" constant="8" symbolic="YES" id="Tb1-QX-dPe"/>
+                            <constraint firstItem="EbE-9T-7SI" firstAttribute="top" secondItem="85d-Rn-asB" secondAttribute="bottom" constant="8" symbolic="YES" id="dgP-lS-64H"/>
+                            <constraint firstItem="d3A-Dq-din" firstAttribute="top" secondItem="L6S-vJ-Gah" secondAttribute="top" id="eow-DQ-6tm"/>
+                            <constraint firstItem="d3A-Dq-din" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="hrx-os-OOo"/>
+                            <constraint firstAttribute="trailing" secondItem="85d-Rn-asB" secondAttribute="trailing" id="jUV-8y-NvM"/>
+                            <constraint firstItem="EbE-9T-7SI" firstAttribute="trailing" secondItem="85d-Rn-asB" secondAttribute="trailing" id="lAc-5R-BGb"/>
+                            <constraint firstItem="85d-Rn-asB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pOT-G1-JVo"/>
+                            <constraint firstItem="EbE-9T-7SI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="964" id="pjP-S6-u3Q"/>
+                            <constraint firstItem="85d-Rn-asB" firstAttribute="top" secondItem="d3A-Dq-din" secondAttribute="bottom" constant="8" symbolic="YES" id="vgD-Nf-rB1"/>
+                            <constraint firstItem="d3A-Dq-din" firstAttribute="centerX" secondItem="85d-Rn-asB" secondAttribute="centerX" id="vkZ-u5-xqx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="L6S-vJ-Gah" id="IlK-uW-GFf"/>
+                        <outlet property="dateLabel" destination="d3A-Dq-din" id="CPd-1K-XfC"/>
+                        <outlet property="dayView" destination="85d-Rn-asB" id="IMN-cp-eS8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-232" y="16"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="cn2-yk-ylf">
+            <objects>
+                <viewController id="0qR-zi-BvP" customClass="StartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="09n-c2-N6D"/>
+                        <viewControllerLayoutGuide type="bottom" id="iHH-Os-Zar"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wOG-CE-SAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-F9-UXB">
+                                <rect key="frame" x="246" y="295" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signIn:" destination="0qR-zi-BvP" eventType="touchUpInside" id="Jg8-F7-LHe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lmX-oh-wOb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZN-tE-Uaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="86"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ya0-hj-ZjX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BCs-Kv-shd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OXe-0S-XOu">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0qR-zi-BvP" kind="relationship" relationship="rootViewController" id="vR4-l0-Td7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lMR-C6-SYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="86"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddIcon" width="300" height="300"/>
+    </resources>
+    <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>

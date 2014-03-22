@@ -7,13 +7,62 @@
 //
 
 #import "ToDoCalAppDelegate.h"
+#import <EventKit/EventKit.h>
+#import "Availabilities.h"
+
+@interface ToDoCalAppDelegate()
+
+@property EKEventStore *store;
+@property UIManagedDocument *document;
+
+@end
 
 @implementation ToDoCalAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.store = [[EKEventStore alloc] init];
+    [self.store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            NSDictionary *userInfo = self.store ? @{ EKStoreAvailabilityStore : self.store } : nil;
+            [[NSNotificationCenter defaultCenter] postNotificationName:EKStoreAvailabilityNotification
+                                                                object:self
+                                                              userInfo:userInfo];
+        }
+    }];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory
+                                                     inDomains:NSUserDomainMask] firstObject];
+    NSString *documentName = @"MyDocument";
+    NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
+    self.document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [self.document openWithCompletionHandler:^(BOOL success){
+            if (success) [self documentIsReady];
+            if (!success) NSLog(@"Couldn't open document at %@", url);
+        }];
+    } else {
+        [self.document saveToURL:url
+                forSaveOperation:UIDocumentSaveForCreating
+               completionHandler:^(BOOL success){
+                   if (success) [self documentIsReady];
+                   if (!success) NSLog(@"Couldn't create document at %@", url);
+               }];
+    }
+    
     return YES;
+}
+
+- (void)documentIsReady
+{
+    if ([self.document documentState] == UIDocumentStateNormal) {
+        NSDictionary *userInfo = self.document ? @{ DatabaseAvailabilityDocument : self.document } : nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseAvailabilityNotification
+                                                            object:self
+                                                          userInfo:userInfo];
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

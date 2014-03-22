@@ -10,4 +10,7 @@
 
 @interface ToDoCalViewController : UIViewController
 
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSArray *events;
+
 @end
